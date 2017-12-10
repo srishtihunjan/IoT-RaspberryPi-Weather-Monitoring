@@ -1,0 +1,48 @@
+<div style="text-align:center">
+    <app-header></app-header>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center center" style="margin-top:1em;">
+    <div style="background-color:white;height:7em;width:20em;">
+        <button mat-button style="height:inherit" (click)="showTemp()">
+            <img src="/assets/temp.png" style="height:5em;width:5em;padding:1em">
+        </button>
+        <span style="font-size:2em">{{currentTemperature}}</span>
+    </div>
+
+    <div style="background-color:white;height:7em;width:20em;margin-left:1em">
+        <button mat-button style="height:inherit; float:left;" (click)="showHumidity()">
+            <img src="/assets/humidity.png" style="height:5em;width:5em;padding:1em">
+        </button>
+        <div style="float:left;margin-top: 1.8em;">
+            <span style="font-size:2em">{{currentHumidity}}</span>
+            <div style="margin-top:10%;color:red">{{currentHumidity > 80 ? 'It might rain!!' : ''}}</div>
+        </div>
+    </div>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center center" style="margin-top:1em;">
+    <div style="background-color:white;height:5em;width:41em;">
+        <div id="showTempHumi" style="margin: 1em 0 0 1em;">
+            <span>Show Temperature and Humidity for : </span>
+            <mat-form-field>
+                <mat-select #searchTemp placeholder="Select">
+                    <mat-option value="month">Month</mat-option>
+                    <mat-option value="year">Year</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button style="margin: 0 0 0 2em" mat-raised-button name="searchTempBtn" (click)="searchTempAndHumidity(searchTemp.value)">Search</button>
+        </div>
+
+    </div>
+</div>
+
+<div id="outerDiv" fxLayout="row" fxLayoutAlign="center center" style="margin-top:1em;">
+    <div id="innerDiv" style="width:500px; box-sizing: border-box;">
+        <div id="temperatureChart" style="box-sizing: border-box;display:none; width:500px;"></div>
+        <div id="humidityChart" style="box-sizing: border-box;display:none; width:500px;"></div>
+        <div id="tempHumidityChart" style="box-sizing: border-box;display:none; width:500px;"></div>
+    </div>
+</div>
+
+<!-- <app-footer></app-footer> -->
